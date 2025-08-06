@@ -110,13 +110,6 @@ public struct StandardInteractionFormatter: InteractionFormatting {
             }
             prompt += "<|START_OF_TURN_TOKEN|><|CHATBOT_TOKEN|>"
             
-        case .yi:
-            prompt += "<|im_start|>system\n\(effectiveSystemPrompt)<|im_end|>\n"
-            for turn in mutableDialogue {
-                prompt += "<|im_start|>\(turn.role.rawValue)\n\(turn.text)<|im_end|>\n"
-            }
-            prompt += "<|im_start|>assistant\n"
-            
         case .unknown:
             // Fallback to a generic ChatML format which is widely supported
             print("⚠️ Kuzco Warning: Unknown model architecture, using ChatML format as fallback")
